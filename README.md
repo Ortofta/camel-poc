@@ -1,4 +1,18 @@
 # camel-poc
+Example route:
+```shell script
+curl -X POST http://localhost:8080/api/route \
+     -H "Content-Type: application/yaml" \
+     --data-binary "
+- from:
+    uri: 'timer:newRoute?period=2000'
+    steps:
+      - setBody:
+          constant: 'Hello from a dynamically added YAML route!'
+      - to: 'log:info'
+"
+```
+
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
